@@ -14,3 +14,30 @@ class LogoGeerator {
         console.log('Generated logo.svg');
     }
 }
+
+class ColorPicker {
+    async pickColor() {
+        const answers = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'color',
+                message: 'Enter color (keyword or hex):',
+            },
+        ]);
+        return answers.color;
+    }
+}
+
+class ShapePicker {
+    async pickShape() {
+        const amswers = await inquirer.prompt([
+            {
+                type: 'list',
+                name: 'shape',
+                message: 'Choose a shape:',
+                choices: ['circle', 'triangle', 'square'],
+            },
+        ]);
+        return answers.shape,
+    }
+}
