@@ -11,11 +11,11 @@ class LogoGenerator {
                 type: 'input',
                 name: 'text',
                 message: 'Enter text (up to three characters):',
-                validate: (input) => input => input.length <= 3,
+                validate: (input) => input.length <= 3,
             },
             {
                 type: 'input',
-                names: 'textColor',
+                name: 'textColor',
                 message: 'Enter text color (keyword or hexadecimal)',
             },
             {
@@ -30,7 +30,8 @@ class LogoGenerator {
                 message: 'Enter shape color (keyword or hexadecimal)',
             }
         ]);
-        this.generateSVG(answers.shape, answers.text, answers.textcolor, answers.shapeColor);
+        this.generateSVG(answers.shape, answers.text, answers.textcolor, answers.shapecolor);
+     }
 
 
     generateSVG(text, textColor, shape, shapeColor){
@@ -51,7 +52,7 @@ class LogoGenerator {
         }
     };
 }
-    }
+    
     fs.writeFile('logo.svg', newShape.render(), (err)=> {
         if (err) {
             console.error('Error creating logo.svg:', err);
@@ -59,12 +60,7 @@ class LogoGenerator {
             console.log('generated logo.svg');
         }
     })
-}
-class FileSaver{
-    saveToFile(svgCode, fileName){
-        fs.writeFileSync(fileName, svgCode);
-    }
-}
+
 
 const LogoGenerator = new LogoGenerator();
 LogoGenerator.generateLogo();
