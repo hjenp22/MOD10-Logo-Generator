@@ -1,48 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// class LogoGeerator {
-//     async generateLogo() {
-//         const text = await this.textPrompter.promtText();
-//         const textColor = await this.colorPicker.pickColor();
-//         const shape = await this.shape.picker.picksShape();
-//         const shapeColor = await this.colorPicker.pickColor();
+const { Triangle, Circle, Square } = require('./lib/Shape');
 
-//         const svgCode = this.svgRenderer.renderSVG(text, textColor, shape, shapeColor);
-//         this.fileSaver.saveToFile(svgCode, 'logo.svg');
 
-//         console.log('Generated logo.svg');
-//     }
-// }
-
-class ColorPicker {
-    async pickColor() {
-        const answers = await inquirer.prompt([
-            {
-                type: 'input',
-                name: 'color',
-                message: 'Enter color (keyword or hex):',
-            },
-        ]);
-        return answers.color;
-    }
-}
-
-class ShapePicker {
-    async pickShape() {
-        const answers = await inquirer.prompt([
-            {
-                type: 'list',
-                name: 'shape',
-                message: 'Choose a shape:',
-                choices: ['circle', 'triangle', 'square'],
-            },
-        ]);
-        return answers.shape;
-    }
-}
-class TextPrompter {
-    async promtText() {
+class LogoGenerator {
+     async generateLogo() {
         const answers = await inquirer.prompt([
             {
                 type: 'input',
@@ -50,13 +13,27 @@ class TextPrompter {
                 message: 'Enter text (up to three characters):',
                 validate: (input) => input => input.length <= 3,
             },
+            {
+                type: 'input',
+                names: 'textColor',
+                message: 'Enter text color (keyword or hexadecimal)',
+            },
+            {
+                type: 'list',
+                name: 'shape',
+                message: 'Choose a shape:',
+                choices: ['circle', 'triangle', 'square'],
+            },
+            {
+                type:'input',
+                name: 'shapeColor',
+                message: 'Enter shape color (keyword or hexadecimal)',
+            }
         ]);
-        return answers.text;
-    }
-}
+        this.generateSVG(answers.shape, answers.text, answers.textcolor, answers.shapeColor);
 
-function SVGRenderer {
-    renderSVG(text, textColor, shape, shapeColor){
+
+    generateSVG(text, textColor, shape, shapeColor){
         let newShape;
         switch (shape) {
             case "Triangle":
@@ -68,11 +45,20 @@ function SVGRenderer {
             case "Square":;
                 newShape= new Square(text, textColor, shape, shapeColor);
                 break;
-            Default:
+            default:
                 console.log('not a valid shape');
-    
+                return;
         }
+    };
+}
     }
+    fs.writeFile('logo.svg', newShape.render(), (err)=> {
+        if (err) {
+            console.error('Error creating logo.svg:', err);
+        } else {
+            console.log('generated logo.svg');
+        }
+    })
 }
 class FileSaver{
     saveToFile(svgCode, fileName){
