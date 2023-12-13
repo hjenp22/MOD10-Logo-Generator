@@ -38,6 +38,33 @@ class ShapePicker {
                 choices: ['circle', 'triangle', 'square'],
             },
         ]);
-        return answers.shape,
+        return answers.shape;
     }
 }
+class TextPrompter {
+    async promtText() {
+        const answers = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'text',
+                message: 'Enter text (up to three characters):',
+                validate: (input) => input => input.length <= 3,
+            },
+        ]);
+        return answers.text;
+    }
+}
+
+class SVGRenderer {
+    renderSVG(text, textColor, shape, shapeColor){
+        //implementations for rendering svg code
+    }
+}
+class FileSaver{
+    saveToFile(svgCode, fileName){
+        fs.writeFileSync(fileName, svgCode);
+    }
+}
+
+const LogoGenerator = new LogoGenerator();
+LogoGenerator.generateLogo();
