@@ -55,15 +55,13 @@ Jenni Park Email: hjipark22@gmail.com
 
 GitHub: hjenp22
 
-Link to Walkthrough: [Link](https://www.loom.com/share/092dee5518fc4016bfb50b082eec1f47?sid=70b09508-366e-46e2-a6b4-d84ef0a6a93d)
+Link to Walkthrough: [Walkthrough](https://www.loom.com/share/092dee5518fc4016bfb50b082eec1f47?sid=70b09508-366e-46e2-a6b4-d84ef0a6a93d)
 
 Project Link: [Link to Repo](https://github.com/hjenp22/MOD10-Logo-Generator)
 
 ## Acknowledgments
 * W3 School
 * AskBCs Learning Assistant 
-* Jose Lopez
-* ChatGPT
 * Cloud Recordings
 
 
