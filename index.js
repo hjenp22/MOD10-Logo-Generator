@@ -1,5 +1,4 @@
 //todo: get packages
-
 const inquirer = require('inquirer');
 const fs = require('fs');
 
@@ -51,7 +50,7 @@ function generateSVG(shape, text, textColor, shapeColor) {
         return;
     }
 
-    //svg file
+    // SVG file generation
     fs.writeFile('logo.svg', newShape.render(), (err) => {
       if (err) {
         console.error('Error creating logo.svg:', err);
@@ -59,8 +58,7 @@ function generateSVG(shape, text, textColor, shapeColor) {
         console.log('Generated logo.svg');
       }
     });
-  }
-
+}
 
 inquirer.prompt(questions).then((response)=> {
     generateSVG(
