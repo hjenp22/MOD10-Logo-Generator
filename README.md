@@ -18,18 +18,21 @@ The aim of this project was to develop a Node.js command-line tool that solicits
 
 
 ## Acceptance Criteria <!--or application steps to each their own -->
-- When I on the weather dashboard it form inputs
-- I can search for a city
-- I am presented with current and future conditions for that city
-- This then can be added to the search history
-- I can view current weather conditions for that city
-- I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
-- I can view future weather conditions for that city
-- I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-- I can click on a city in the search history
-- I am again presented with current and future conditions for that city
-![!\[Alt text\](image.png)](/Screen%20Shot%202024-02-25%20at%204.27.30%20PM.png)
-![!\[Alt text\](image.png)](/Screen%20Shot%202024-02-25%20at%204.27.50%20PM.png)
+### Installation
+1. Run 'npm init' in the command-line
+2. Run 'npm install inquirer@8.2.4' in the command line
+3. Run 'npm install --save-dev jest' in the command line
+### Usage
+1. Open up terminal
+2. In the command line type out and enter 'node. index.js'
+3. Answer the prompts asked in the terminal
+
+![!\[Alt text\](image.png)](/Images/terminal.png)
+4. SVG file is generated 
+5. Go into SVG file and open with live server to see logo
+
+![!\[Alt text\](image.png)](/Images/HJP.png)
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -52,9 +55,9 @@ Jenni Park Email: hjipark22@gmail.com
 
 GitHub: hjenp22
 
-Project Link: [Link to Deployed Attribute](https://hjenp22.github.io/Server-SideAPI-Weather-Dashboard/)
+Link to Walkthrough: [Link](https://www.loom.com/share/092dee5518fc4016bfb50b082eec1f47?sid=70b09508-366e-46e2-a6b4-d84ef0a6a93d)
 
-Project Link: [Link to Repo](https://github.com/hjenp22/Server-SideAPI-Weather-Dashboard)
+Project Link: [Link to Repo](https://github.com/hjenp22/MOD10-Logo-Generator)
 
 ## Acknowledgments
 * W3 School
