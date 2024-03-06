@@ -1,38 +1,40 @@
+//todo: get packages
+
 const inquirer = require('inquirer');
 const fs = require('fs');
+
+//application using imports from the lib
 const { Triangle, Circle, Square } = require('./lib/Shape');
 
-class LogoGenerator {
-  async generateLogo() {
-    const answers = await inquirer.prompt([
-      {
-        type: 'input',
-        name: 'text',
-        message: 'Enter text (up to three characters):',
-        validate: (input) => input.length <= 3,
-      },
-      {
-        type: 'input',
-        name: 'textColor',
-        message: 'Enter text color (keyword or hexadecimal)',
-      },
-      {
-        type: 'list',
-        name: 'shape',
-        message: 'Choose a shape:',
-        choices: ['circle', 'triangle', 'square'],
-      },
-      {
-        type: 'input',
-        name: 'shapeColor',
-        message: 'Enter shape color (keyword or hexadecimal)',
-      },
-    ]);
+//questions
+const questions = [
+  {
+    type: "input",
+    text: "Logo Text: Up to 3 characters",
+    name: "text",
+    validate: function (value) {
+      return value.length <= 3 ? true : "Please enter up to three characters!";
+    },
+  },
+  {
+    type: 'input',
+    name: 'textColor',
+    text: 'Enter text color (keyword or hexadecimal)',
+  },
+  {
+    type: 'list',
+    text: 'Choose a shape:',
+    name: 'shape',
+    choices: ['circle', 'triangle', 'square'],
+  },
+  {
+    type: 'input',
+    text: 'Enter shape color (keyword or hexadecimal)',
+    name: 'shapeColor',
+  },
+];
 
-    this.generateSVG(answers.shape, answers.text, answers.textColor, answers.shapeColor);
-  }
-
-  generateSVG(shape, text, textColor, shapeColor) {
+function generateSVG(shape, text, textColor, shapeColor) {
     let newShape;
     switch (shape) {
       case 'triangle':
@@ -49,6 +51,7 @@ class LogoGenerator {
         return;
     }
 
+    //svg file
     fs.writeFile('logo.svg', newShape.render(), (err) => {
       if (err) {
         console.error('Error creating logo.svg:', err);
@@ -57,7 +60,7 @@ class LogoGenerator {
       }
     });
   }
-}
+
 
 inquirer.prompt(questions).then((response)=> {
     generateSVG(
